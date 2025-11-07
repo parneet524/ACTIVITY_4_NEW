@@ -57,7 +57,15 @@ class ContactList(QMainWindow):
 
     @Slot()
     def __on_add_contact(self) -> None:
-        """Adds a new contact when the Add Contact button is clicked."""
+        """Adds a new contact when the Add Contact button is clicked.
+        This method retrieves the name and phone number entered by the user,
+        validates that both fields contain data, and then inserts a new row into
+        the contact table. If either field is empty, an instructional message is
+        displayed in the status label instead of adding a contact.
+
+        Returns:
+            None: This method does not return a value.
+        """
 
         name = self.contact_name_input.text().strip()
         phone = self.phone_input.text().strip()
@@ -75,7 +83,17 @@ class ContactList(QMainWindow):
 
     @Slot()
     def __on_remove_contact(self) -> None:
-        """Removes the selected contact when the Remove Contact button is clicked."""
+        """Removes the selected contact when the Remove Contact button is clicked.
+        This method checks whether a table row is selected. If so, it displays a
+        confirmation dialog asking the user to confirm the removal. If the user
+        chooses 'Yes', the selected row is removed from the table and a success
+        message is shown. If the user chooses 'No', the removal is cancelled and
+        a message is displayed. If no row is selected, an instructional message
+        is shown in the status label.
+
+        Returns:
+            None: This method does not return a value.
+        """
 
         row = self.contact_table.currentRow()
 
